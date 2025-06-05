@@ -361,7 +361,6 @@ elif dashboard_mode == "Analytics":
                 y='total_revenue',
                 color='churn_label',
                 labels={
-                    'year_month': '연도-월',
                     'total_revenue': '매출 (원)',
                     'churn_label': ''
                 },
@@ -377,7 +376,7 @@ elif dashboard_mode == "Analytics":
             )
 
             # x축 레이블 회전
-            fig_revenue.update_xaxes(tickangle=45)
+            fig_revenue.update_xaxes(tickangle=45, title="")
 
             st.plotly_chart(fig_revenue, use_container_width=True)
 
@@ -385,7 +384,7 @@ elif dashboard_mode == "Analytics":
         col2 = st.columns(1)[0]
 
         with col2:
-            st.subheader("인당 주문금액 & 주문수 추이")
+            st.subheader("인당 주문금액 / 주문수 추이")
 
             # 데이터 불러오기
             order_counts_by_month = pd.read_csv("assets/order_counts_by_month.csv")
@@ -460,7 +459,6 @@ elif dashboard_mode == "Analytics":
             # 레이아웃 설정
             fig_combo.update_layout(
                 height=400,
-                xaxis_title="연도-월",
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
             )
 
